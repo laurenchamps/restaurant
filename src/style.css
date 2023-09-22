@@ -1,0 +1,66 @@
+/* Colour scheme */
+/* https://huemint.com/brand-intersection/#palette=092530-f3cccf-d24546-6e070c */
+/* accent: #d24546 */
+/* light pink: #f3cccf */
+
+/* Reset */
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* General typography */
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #092530;
+}
+
+h1 {
+    font-size: 6rem;
+}
+
+.hero {  
+    --bg-image: url(../src/pizza.jpg);
+    --bg-image-opacity: 0.5;
+    background-color: #092530;
+    color: #fff;
+    text-align: center;
+
+    padding-top: 250px;
+    padding-bottom: 250px;
+
+    position: relative;
+    isolation: isolate;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    opacity: var(--bg-image-opacity);
+
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center center;
+}
