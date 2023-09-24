@@ -33,10 +33,21 @@ img {
 body {
     font-family: 'Courier New', Courier, monospace;
     background-color: #092530;
+    color: #fff;
 }
 
 h1 {
     font-size: 6rem;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto, 1fr, auto;
+}
+
+p {
+    padding-top: 1rem;
 }
 
 .hero {  
@@ -46,8 +57,8 @@ h1 {
     color: #fff;
     text-align: center;
 
-    padding-top: 250px;
-    padding-bottom: 250px;
+    padding-top: 280px;
+    padding-bottom: 280px;
 
     position: relative;
     isolation: isolate;
@@ -64,3 +75,44 @@ h1 {
     background-size: cover;
     background-position: center center;
 }
+
+nav {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.navbar {
+    display: flex;
+    gap: 4rem;
+}
+
+.navbar li {
+    font-size: 1.2rem;
+}
+
+footer {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.address {
+    text-transform: uppercase;
+}
+
+/* .copyright {
+    margin-top: 2rem;
+} */
+
