@@ -8,7 +8,7 @@ export default function init() {
     return content;
 }
 
-function loadHeader() {
+export function loadHeader() {
     const header = document.createElement('header');
     header.appendChild(loadMenu());
 
@@ -16,7 +16,7 @@ function loadHeader() {
 }
 
 function loadMenu(){
-    const menuItems = ['Home', 'Menu', 'Contact'];
+    const menuItems = ['home', 'menu', 'contact'];
 
     const nav = document.createElement('nav');
     const ul = document.createElement('ul');
@@ -25,6 +25,7 @@ function loadMenu(){
     for(let i = 0; i < menuItems.length; i++) {
         const li = document.createElement('li');
         li.appendChild(document.createTextNode(menuItems[i]));
+        li.classList.add(menuItems[i]);
         ul.appendChild(li);
     }
 
@@ -33,17 +34,24 @@ function loadMenu(){
     return nav; 
 }
 
-function loadMain() {
+export function loadMain(content) {
     const div = document.createElement('div');
-    const h1 = document.createElement('h1');
-
     div.classList.add('hero');
-    h1.textContent = 'Melt';
 
-    div.appendChild(h1);
+    div.appendChild(content);
 
     return div;
 }
+
+export function displayName() {
+    const h1 = document.createElement('h1');
+
+    h1.textContent = 'Melt';
+
+    return h1;
+}
+
+
 
 function loadFooter() {
     const footer = document.createElement('footer');
