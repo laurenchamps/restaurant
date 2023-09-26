@@ -1,8 +1,12 @@
 export default function init() {
+    while (document.body.firstChild) {
+        document.body.removeChild(document.body.firstChild);
+    }
+
     const content = document.querySelector('body');
 
     content.appendChild(loadHeader());
-    content.appendChild(loadMain());
+    content.appendChild(loadMain(displayName()));
     content.appendChild(loadFooter());
 
     return content;
@@ -10,22 +14,22 @@ export default function init() {
 
 export function loadHeader() {
     const header = document.createElement('header');
-    header.appendChild(loadMenu());
+    header.appendChild(loadNav());
 
     return header;
 }
 
-function loadMenu(){
-    const menuItems = ['home', 'menu', 'contact'];
+function loadNav(){
+    const navItems = ['home', 'menu', 'contact'];
 
     const nav = document.createElement('nav');
     const ul = document.createElement('ul');
     ul.classList.add('navbar');
 
-    for(let i = 0; i < menuItems.length; i++) {
+    for(let i = 0; i < navItems.length; i++) {
         const li = document.createElement('li');
-        li.appendChild(document.createTextNode(menuItems[i]));
-        li.classList.add(menuItems[i]);
+        li.appendChild(document.createTextNode(navItems[i]));
+        li.setAttribute('id', navItems[i]);
         ul.appendChild(li);
     }
 

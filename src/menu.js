@@ -60,8 +60,12 @@ export function displayMenu() {
         let description = '';
         const para = document.createElement('p');
 
-        pizza.ingredients.forEach(function(ingredient) {
+        pizza.ingredients.forEach(function(ingredient, index) {
+            if (index === (pizza.ingredients.length - 1)) {
+                description += `${ingredient}`
+            } else {
             description += `${ingredient}, `;
+            }
             menuItem.setAttribute('id', pizza.id);
         });
 
