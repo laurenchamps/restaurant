@@ -1,17 +1,3 @@
-export default function init() {
-    while (document.body.firstChild) {
-        document.body.removeChild(document.body.firstChild);
-    }
-
-    const content = document.querySelector('body');
-
-    content.appendChild(loadHeader());
-    content.appendChild(loadMain(displayName()));
-    content.appendChild(loadFooter());
-
-    return content;
-}
-
 export function loadHeader() {
     const header = document.createElement('header');
     header.appendChild(loadNav());
@@ -47,17 +33,12 @@ export function loadMain(content) {
     return div;
 }
 
-export function displayName() {
-    const h1 = document.createElement('h1');
-
-    h1.textContent = 'Melt';
-
-    return h1;
+export function highlightNavItem(item) {
+    const navItem = document.querySelector('.' + item);
+    navItem.classList.add('active');
 }
 
-
-
-function loadFooter() {
+export function loadFooter() {
     const footer = document.createElement('footer');
 
     footer.appendChild(createSocialIcons());

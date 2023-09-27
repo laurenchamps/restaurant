@@ -81,6 +81,8 @@ p {
     background-position: center center;
 }
 
+/* Navbar */
+
 nav {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -97,6 +99,10 @@ nav {
 .navbar li {
     font-size: 1.2rem;
     cursor: pointer;
+}
+
+.active {
+    border-bottom: 2px solid #fff;
 }
 
 footer {
@@ -131,10 +137,7 @@ footer {
     text-transform: capitalize;
 }
 
-.active {
-    text-decoration: underline;
-    font-weight: bold;
-}
+
 
 
 /* Media queries */

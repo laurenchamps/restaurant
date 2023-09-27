@@ -1,12 +1,18 @@
-export default function menu() {
-   
+export default function loadMenu() {
+    while (document.body.firstChild) {
+        document.body.removeChild(document.body.firstChild);
+    }
 
-    return document.body.appendChild(createMenu());
+    const content = document.querySelector('body');
 
+    content.appendChild(loadHeader());
+    content.appendChild(loadMain(displayMenu()));
+    content.appendChild(loadFooter());
+
+    return content;
 }
 
-
-export function displayMenu() {
+function displayMenu() {
     const pizzas = [
         {
             id: 1,
