@@ -1,23 +1,40 @@
+import homeContent from './home.js';
+import loadMenu from './menu.js';
+import { displayHome } from './home.js';
+
+const content = document.getElementById('content');
+
 export function loadHeader() {
     const header = document.createElement('header');
     header.appendChild(loadNav());
 
-    return header;
+    content.appendChild(header);
 }
 
 function loadNav(){
-    const navItems = ['home', 'menu', 'contact'];
-
     const nav = document.createElement('nav');
+
     const ul = document.createElement('ul');
     ul.classList.add('navbar');
 
-    for(let i = 0; i < navItems.length; i++) {
-        const li = document.createElement('li');
-        li.appendChild(document.createTextNode(navItems[i]));
-        li.setAttribute('id', navItems[i]);
-        ul.appendChild(li);
-    }
+    const homeNav = document.createElement('li');
+    homeNav.appendChild(document.createTextNode('home'));
+    homeNav.setAttribute('id', 'home');
+    // homeNav.addEventListener('click', loadHome);
+    ul.appendChild(homeNav);
+
+    const menuNav = document.createElement('li');
+    menuNav.appendChild(document.createTextNode('menu'));
+    menuNav.setAttribute('id', 'menu');
+    // menuNav.addEventListener('click', loadMenu);
+    ul.appendChild(menuNav);
+
+    const navContact = document.createElement('li');
+    navContact.appendChild(document.createTextNode('contact'));
+    navContact.setAttribute('id', 'contact');
+    // navContact.addEventListener('click', loadContact);
+    ul.appendChild(navContact);
+    
 
     nav.appendChild(ul);
     
@@ -29,13 +46,11 @@ export function highlightNavItem(item) {
     navItem.classList.add('active');
 }
 
-export function loadMain(content) {
-    const div = document.createElement('div');
-    div.classList.add('hero');
-
-    div.appendChild(content);
-
-    return div;
+export function loadMain() {
+    const main = document.createElement('main');
+    main.classList.add('hero');
+    
+    document.body.appendChild(main);
 }
 
 export function loadFooter() {
@@ -44,7 +59,7 @@ export function loadFooter() {
     footer.appendChild(createSocialIcons());
     footer.appendChild(createAddress());
 
-    return footer;
+    content.appendChild(footer);
 }
 
 function createSocialIcons() {
@@ -96,12 +111,36 @@ function createSocialIcons() {
 
 function createAddress() {
     const div = document.createElement('div');
-    const para = document.createElement('p');
+    const para1 = document.createElement('p');
+    const para2 = document.createElement('p');
 
     div.classList.add('address');
-    para.textContent = '1 Second St, Adelaide, SA, 5000. Tel 123 456 789';
+    para1.textContent = 'Melt Pizzeria'
+    para2.textContent = '1 Second St, Adelaide, SA, 5000. Tel 123 456 789';
 
-    div.appendChild(para);
+    div.appendChild(para1);
+    div.appendChild(para2);
 
     return div;
+}
+
+export function setTab(tab) {
+    const main = document.querySelector('main');
+
+    // Remove existing contents of main
+    while (main.firstChild) {
+        main.removeChild(main.firstChild);
+    }
+
+    // Populate main with contents of selected tab
+    if (tab === 'home') {
+        displayHome();
+    } else if (tab === 'menu') {
+        displayMenu();
+    } else if (tab === 'contact') {
+        displayContact();
+    }
+
+    // Highlight selected tab
+    highlightNavItem(tab);
 }

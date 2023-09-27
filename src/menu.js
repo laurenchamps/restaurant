@@ -1,13 +1,17 @@
+import { loadHeader, loadMain, loadFooter, highlightNavItem } from './website.js';
+
 export default function loadMenu() {
-    while (document.body.firstChild) {
-        document.body.removeChild(document.body.firstChild);
+    const content = document.getElementById('content');
+
+    while (content.firstChild) {
+        content.removeChild(content.firstChild);
     }
 
-    const content = document.querySelector('body');
+    loadHeader();
+    loadMain(displayMenu());
+    loadFooter();
 
-    content.appendChild(loadHeader());
-    content.appendChild(loadMain(displayMenu()));
-    content.appendChild(loadFooter());
+    highlightNavItem('menu');
 
     return content;
 }
