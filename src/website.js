@@ -1,5 +1,6 @@
 import displayHome from './home.js';
 import displayMenu from './menu.js';
+import displayContact from './contact.js';
 
 export const navItems = ['home', 'menu', 'contact'];
 const content = document.getElementById('content');

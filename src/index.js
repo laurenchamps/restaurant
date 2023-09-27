@@ -2,7 +2,8 @@ import _ from 'lodash';
 import './style.css';
 import displayHome from './home.js';
 import displayMenu from './menu.js';
-import { loadHeader, loadMain, loadFooter, setTab, loadNav, navItems } from './website.js';
+import displayContact from './contact.js'
+import { loadHeader, loadMain, loadFooter, setTab, navItems } from './website.js';
 
 // function initialise() {
 //     loadHeader();
@@ -11,8 +12,6 @@ import { loadHeader, loadMain, loadFooter, setTab, loadNav, navItems } from './w
 // }
 
 // initialise();
-
-loadNav();
 
 loadHeader();
 loadMain();
@@ -26,9 +25,8 @@ navItems.forEach(navItem => {
             setTab('home');
         } else if (item.id === 'menu') {
             setTab('menu');
+        } else if (item.id === 'contact') {
+            setTab('contact');
         }
-        // } else if (item.id === 'contact') {
-        //     loadContact();
-        // }
     });
 });
