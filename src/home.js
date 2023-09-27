@@ -4,12 +4,14 @@ export default function loadHome() {
     while (document.body.firstChild) {
         document.body.removeChild(document.body.firstChild);
     }
-
+    
     const content = document.querySelector('body');
 
     content.appendChild(loadHeader());
     content.appendChild(loadMain(displayName()));
     content.appendChild(loadFooter());
+
+    highlightNavItem('home');
 
     return content;
 }
@@ -21,4 +23,3 @@ export function displayName() {
 
     return h1;
 }
-

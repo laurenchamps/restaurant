@@ -24,6 +24,11 @@ function loadNav(){
     return nav; 
 }
 
+export function highlightNavItem(item) {
+    const navItem = document.getElementById(item);
+    navItem.classList.add('active');
+}
+
 export function loadMain(content) {
     const div = document.createElement('div');
     div.classList.add('hero');
@@ -31,11 +36,6 @@ export function loadMain(content) {
     div.appendChild(content);
 
     return div;
-}
-
-export function highlightNavItem(item) {
-    const navItem = document.querySelector('.' + item);
-    navItem.classList.add('active');
 }
 
 export function loadFooter() {
