@@ -1,22 +1,4 @@
-import { loadHeader, loadMain, loadFooter, highlightNavItem } from './website.js';
-
-export default function loadMenu() {
-    const content = document.getElementById('content');
-
-    while (content.firstChild) {
-        content.removeChild(content.firstChild);
-    }
-
-    loadHeader();
-    loadMain(displayMenu());
-    loadFooter();
-
-    highlightNavItem('menu');
-
-    return content;
-}
-
-function displayMenu() {
+export default function displayMenu() {
     const pizzas = [
         {
             id: 1,
@@ -47,6 +29,8 @@ function displayMenu() {
             ingredients: ['mushroom', 'pecorino', 'smoked scamorza', 'black pepper', 'thyme', 'garlic confit'],
         },
     ];
+
+    const main = document.querySelector('main');
 
     const title = document.createElement('h2');
     title.classList.add('title');
@@ -89,5 +73,5 @@ function displayMenu() {
 
     menu.appendChild(menuItems);
     
-    return menu;
-};
+    main.appendChild(menu);
+}

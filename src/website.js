@@ -1,7 +1,7 @@
-import homeContent from './home.js';
-import loadMenu from './menu.js';
-import { displayHome } from './home.js';
+import displayHome from './home.js';
+import displayMenu from './menu.js';
 
+export const navItems = ['home', 'menu', 'contact'];
 const content = document.getElementById('content');
 
 export function loadHeader() {
@@ -11,30 +11,20 @@ export function loadHeader() {
     content.appendChild(header);
 }
 
-function loadNav(){
+export function loadNav(){
     const nav = document.createElement('nav');
 
     const ul = document.createElement('ul');
     ul.classList.add('navbar');
 
-    const homeNav = document.createElement('li');
-    homeNav.appendChild(document.createTextNode('home'));
-    homeNav.setAttribute('id', 'home');
-    // homeNav.addEventListener('click', loadHome);
-    ul.appendChild(homeNav);
-
-    const menuNav = document.createElement('li');
-    menuNav.appendChild(document.createTextNode('menu'));
-    menuNav.setAttribute('id', 'menu');
-    // menuNav.addEventListener('click', loadMenu);
-    ul.appendChild(menuNav);
-
-    const navContact = document.createElement('li');
-    navContact.appendChild(document.createTextNode('contact'));
-    navContact.setAttribute('id', 'contact');
-    // navContact.addEventListener('click', loadContact);
-    ul.appendChild(navContact);
-    
+    navItems.forEach(item => {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(item));
+        li.setAttribute('id', item);
+        li.classList.add('navItem');
+        
+        ul.appendChild(li);
+    })
 
     nav.appendChild(ul);
     
@@ -50,7 +40,7 @@ export function loadMain() {
     const main = document.createElement('main');
     main.classList.add('hero');
     
-    document.body.appendChild(main);
+    content.appendChild(main);
 }
 
 export function loadFooter() {
@@ -126,11 +116,25 @@ function createAddress() {
 
 export function setTab(tab) {
     const main = document.querySelector('main');
+    const footer = document.querySelector('footer');
 
     // Remove existing contents of main
     while (main.firstChild) {
         main.removeChild(main.firstChild);
     }
+
+    if (footer) {
+        footer.parentNode.removeChild(footer);
+    }
+
+    // Remove highlight from nav item
+    const tabs = document.querySelectorAll('.navItem');
+
+    tabs.forEach(tab => {
+        if (tab.classList.contains('active')) {
+            tab.classList.remove('active');
+        };
+    })
 
     // Populate main with contents of selected tab
     if (tab === 'home') {
@@ -140,6 +144,8 @@ export function setTab(tab) {
     } else if (tab === 'contact') {
         displayContact();
     }
+
+    loadFooter();
 
     // Highlight selected tab
     highlightNavItem(tab);

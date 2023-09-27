@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import './style.css';
-import { homeContent } from './home.js';
+import displayHome from './home.js';
 import displayMenu from './menu.js';
-import { loadHeader, loadMain, loadFooter, setTab } from './website.js';
+import { loadHeader, loadMain, loadFooter, setTab, loadNav, navItems } from './website.js';
 
 // function initialise() {
 //     loadHeader();
@@ -12,20 +12,20 @@ import { loadHeader, loadMain, loadFooter, setTab } from './website.js';
 
 // initialise();
 
+loadNav();
+
 loadHeader();
 loadMain();
 setTab('home');
-
-const navItems = ['home', 'menu', 'contact'];
 
 navItems.forEach(navItem => {
     const item = document.getElementById(navItem);
 
     item.addEventListener('click', () => {
         if (item.id === 'home') {
-            loadHome();
+            setTab('home');
         } else if (item.id === 'menu') {
-            loadMenu();
+            setTab('menu');
         }
         // } else if (item.id === 'contact') {
         //     loadContact();
