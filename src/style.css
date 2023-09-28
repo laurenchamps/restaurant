@@ -65,7 +65,7 @@ p {
 
 .hero {  
     --bg-image: url(../src/pizza.jpg);
-    --bg-image-opacity: 0.5;
+    --bg-image-opacity: 0.35;
     background-color: #092530;
     color: #fff;
     text-align: center;
@@ -127,6 +127,7 @@ footer {
     align-items: center;
     gap: 2rem;
     padding-top: 2rem;
+    cursor: pointer;
 }
 
 .footer-address {
@@ -152,20 +153,21 @@ footer {
 
 .opening-times {
     display: grid;
-    grid-template-columns: repeat(2, 200px);
-    text-align: start;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    text-align: center;
     }
 
 .container {
     display: flex;
-    justify-content: space-between;
-    gap: 3rem;
-    max-width: 50%;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 70%;
     margin: 0 auto;
 }
 
 .full-address {
-    text-align: end;
+    text-align: center;
 }
 
 .full-address .name {
@@ -178,10 +180,35 @@ main {
     justify-content: center;
 }
 
+button {
+    border: none;
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
 /* Media queries */
 @media (min-width: 1472px) {
     [id="7"] {
         grid-column-start: 2;
+    }
+}
+
+@media (min-width: 850px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 6rem;
+    }
+
+    .opening-times {
+        text-align: start;
+    }
+
+    .full-address {
+        text-align: end;
     }
 }
 
