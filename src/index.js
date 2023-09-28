@@ -30,3 +30,4 @@ navItems.forEach(navItem => {
         }
     });
 });
+

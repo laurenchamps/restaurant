@@ -1,27 +1,22 @@
+import { openingHours } from './website.js';
+import { restaurant } from './website.js';
+
 export default function displayContact() {
     const main = document.querySelector('main');
+
+    const title = document.createElement('h2');
+    title.classList.add('title');
+    title.textContent = 'Contact us';
+
+    const container = document.createElement('div');
+    container.classList.add('container');
+
     const openingTimes = document.createElement('div');
     openingTimes.classList.add('opening-times');
-
-    const openingHours = {
-        "Monday": "Closed",
-        "Tuesday": "5pm - 9pm",
-        "Wednesday": "5pm - 9pm",
-        "Thursday": "12pm - 9pm",
-        "Friday": "12pm - 11pm",
-        "Saturday": "12pm - 11pm",
-        "Sunday": "12pm - 9pm",
-    }
-    
-    const hoursHeading = document.createElement('h2');
-    hoursHeading.textContent = 'Opening hours';
-    main.appendChild(hoursHeading);
 
     const days = Object.keys(openingHours);
 
     days.forEach(day => {
-        console.log(day);
-        console.log(openingHours[day]);
         const dayElement = document.createElement('p');
         const hoursElement = document.createElement('p');
 
@@ -32,8 +27,26 @@ export default function displayContact() {
         openingTimes.appendChild(hoursElement);
     })
 
+    const address = document.createElement('div');
+    address.classList.add('full-address');
 
+    const contactDetails = Object.keys(restaurant);
 
+    contactDetails.forEach(item => {
+        const para = document.createElement('p');
+        para.textContent = restaurant[item];
+        para.classList.add(item);
 
-    main.appendChild(openingTimes);
+        address.appendChild(para);
+    })
+
+    const bookBtn = document.createElement('button');
+    bookBtn.textContent = 'Book now';
+
+    address.appendChild(bookBtn);
+
+    main.appendChild(title);
+    main.appendChild(container);
+    container.appendChild(openingTimes);
+    container.appendChild(address);
 }

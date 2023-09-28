@@ -3,6 +3,23 @@ import displayMenu from './menu.js';
 import displayContact from './contact.js';
 
 export const navItems = ['home', 'menu', 'contact'];
+
+export const openingHours = {
+    "Monday": "Closed",
+    "Tuesday": "5pm - 9pm",
+    "Wednesday": "5pm - 9pm",
+    "Thursday": "12pm - 9pm",
+    "Friday": "12pm - 11pm",
+    "Saturday": "12pm - 11pm",
+    "Sunday": "12pm - 9pm",
+};
+
+export const restaurant = {
+    "name": "Melt Pizzeria",
+    "address": "1 Second St, Adelaide, SA 5000",
+    "phone": "+61 234 567 890",
+}
+
 const content = document.getElementById('content');
 
 export function loadHeader() {
@@ -105,9 +122,9 @@ function createAddress() {
     const para1 = document.createElement('p');
     const para2 = document.createElement('p');
 
-    div.classList.add('address');
-    para1.textContent = 'Melt Pizzeria'
-    para2.textContent = '1 Second St, Adelaide, SA, 5000. Tel 123 456 789';
+    div.classList.add('footer-address');
+    para1.textContent = restaurant.name;
+    para2.textContent = restaurant.address + '. Tel ' + restaurant.phone;
 
     div.appendChild(para1);
     div.appendChild(para2);
