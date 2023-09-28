@@ -1,22 +1,16 @@
 import _ from 'lodash';
 import './style.css';
-import displayHome from './home.js';
-import displayMenu from './menu.js';
-import displayContact from './contact.js'
-import { loadHeader, loadMain, loadFooter, setTab, navItems } from './website.js';
+import { loadHeader, loadMain, setTab, navItems } from './website.js';
 
-// function initialise() {
-//     loadHeader();
-//     loadMain(displayName());
-//     loadFooter();
-// }
+function initialise() {
+    loadHeader();
+    loadMain();
+    setTab('home');
+}
 
-// initialise();
+initialise();
 
-loadHeader();
-loadMain();
-setTab('home');
-
+// Add event listeners to tabs
 navItems.forEach(navItem => {
     const item = document.getElementById(navItem);
 

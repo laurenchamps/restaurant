@@ -44,7 +44,8 @@ export default function displayMenu() {
     const menuItems = document.createElement('div');
     menuItems.classList.add('menu-item-grp');
 
-    pizzas.forEach(function(pizza) {
+    // Create elements for each pizza and description
+    pizzas.forEach(pizza => {
         const menuItem = document.createElement('div');
         menuItem.classList.add('menu-item');
 
@@ -54,7 +55,8 @@ export default function displayMenu() {
         let description = '';
         const para = document.createElement('p');
 
-        pizza.ingredients.forEach(function(ingredient, index) {
+        // Add each ingredient to description with correct punctuation
+        pizza.ingredients.forEach((ingredient, index) => {
             if (index === (pizza.ingredients.length - 1)) {
                 description += `${ingredient}`
             } else {

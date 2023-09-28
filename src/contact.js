@@ -11,6 +11,13 @@ export default function displayContact() {
     const container = document.createElement('div');
     container.classList.add('container');
 
+    main.appendChild(title);
+    main.appendChild(container);
+    container.appendChild(displayOpeningHours());
+    container.appendChild(displayAddress());
+}
+
+function displayOpeningHours() {
     const openingTimes = document.createElement('div');
     openingTimes.classList.add('opening-times');
 
@@ -27,6 +34,10 @@ export default function displayContact() {
         openingTimes.appendChild(hoursElement);
     })
 
+    return openingTimes;
+}
+
+function displayAddress() {
     const address = document.createElement('div');
     address.classList.add('full-address');
 
@@ -45,8 +56,5 @@ export default function displayContact() {
 
     address.appendChild(bookBtn);
 
-    main.appendChild(title);
-    main.appendChild(container);
-    container.appendChild(openingTimes);
-    container.appendChild(address);
+    return address;
 }

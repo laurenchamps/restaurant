@@ -136,7 +136,7 @@ export function setTab(tab) {
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
 
-    // Remove existing contents of main
+    // Remove existing contents of main and footer
     while (main.firstChild) {
         main.removeChild(main.firstChild);
     }
@@ -163,6 +163,7 @@ export function setTab(tab) {
         displayContact();
     }
 
+    // Load footer
     loadFooter();
 
     // Highlight selected tab
